@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2019 Rural Hunter
+ */
+
+#include "../gxl_p230_2g_buildroot.dts"
+#include "coreelec_gxl.dtsi"
+
+/ {
+	model = "Phicomm N1";
+	coreelec-dt-id = "gxl_p230_2g_phicomm_n1";
+
+	/* N1 has no CVBS/AV output */
+	cvbsout {
+		status = "disabled";
+	};
+
+	/* N1 exposes its USB port in host mode only */
+	dwc2_a {
+		controller-type = <1>; /* 0: normal, 1: host, 2: device, 3: otg */
+	};
+};
